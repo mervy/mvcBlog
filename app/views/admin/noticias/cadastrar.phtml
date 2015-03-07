@@ -1,0 +1,51 @@
+<div class="container">
+    <h3>Inserindo artigos</h3>
+    <form class="form-horizontal" action='/admin/cadastrar/<?= $this->getParam(2) ?>/do' enctype="multipart/form-data" method="POST">
+        <div class="form-group">
+            <label for="titulo" class="col-sm-2 control-label">Título</label>
+            <div class="col-sm-10">
+                <input type="text" name="titulo" class="form-control" id="titulo" placeholder="Título do artigo">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="imagem" class="col-sm-2 control-label">Imagem</label>
+            <div class="col-sm-10">
+                <input type="file" name="imagem" class="form-control" id="imagem" placeholder="Upload de imagem do artigo">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="categorias_id" class="col-sm-2 control-label">Categoria</label>
+            <div class="col-sm-4">
+                <select class="form-control" required name='categorias_id'>  
+                    <option value=''>Categorias</option>
+                    <?php foreach ($view_categorias_art as $cat): ?>
+                        <option size="30" value="<?= $cat['id'] ?>"><?= $cat['categoria'] ?>
+                        <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="artigo" class="col-sm-2 control-label">Artigo: </label>
+            <div class="col-sm-10">
+                <textarea id='post' name='artigo'></textarea><!--Largura e altura definidos em /web_files/js/tinymce/implementar2.js-->    
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="categorias_id" class="col-sm-2 control-label">Autor: </label>
+            <div class="col-sm-4">
+                <select class="form-control" required name='autor'>  
+                    <option size="30" value=''>Autor</option>
+                    <?php foreach ($view_autores as $autor): ?>
+                        <option size="30" value="<?= $autor['id'] ?>"><?= $autor['apelido'] ?>
+                        <?php endforeach; ?>
+                </select> 
+            </div>
+        </div>  
+        <input type="hidden" name="data" value="<?= date('Y-m-d') ?>" />
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" name="inserir" class="btn btn-default">Cadastrar</button>                
+            </div>
+        </div>
+    </form>
+</div>

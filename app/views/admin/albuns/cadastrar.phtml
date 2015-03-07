@@ -1,0 +1,41 @@
+<div class="container">
+    <h3>Inserindo novos álbuns</h3>
+    <p>Por favor faça o upload múltiplo das imagens antes!</p>
+    <form class="form-horizontal" action='/admin/cadastrar/<?= $this->getParam(2) ?>/do' enctype="multipart/form-data" method="POST">
+        <div class="form-group">
+            <label for="titulo" class="col-sm-2 control-label">Título</label>
+            <div class="col-sm-10">
+                <input type="titulo" name="titulo" class="form-control" id="titulo" placeholder="Título do álbum" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="slug_titulo" class="col-sm-2 control-label">Slug título</label>
+            <div class="col-sm-10">
+                <input type="slug_titulo" name="slug_titulo" class="form-control" id="slug_titulo" placeholder="Slug título (igual a pasta onde foi feito o upload)" >
+            </div>
+        </div>         
+        <div class="form-group">
+            <label for="descricao" class="col-sm-2 control-label">Descrição: </label>
+            <div class="col-sm-10">                
+                <textarea id='post' name='descricao'></textarea><!--Largura e altura definidos em /web_files/js/tinymce/implementar2.js-->    
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="autor" class="col-sm-2 control-label">Autor:</label>
+            <div class="col-sm-4">
+                <select class="form-control" required name='autor'>  
+                    <option value=''>Autor</option>
+                    <?php foreach ($view_autores as $autor): ?>
+                        <option size="30" value="<?= $autor['id'] ?>"><?= $autor['apelido'] ?>
+                        <?php endforeach; ?>
+                </select>      
+            </div>
+        </div>  
+        <input type="hidden" name="data" value="<?= date('Y-m-d'); ?>" />        
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" name="inserir" class="btn btn-default">Cadastrar</button>                
+            </div>
+        </div>
+    </form>
+</div>

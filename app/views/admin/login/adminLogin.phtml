@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row">              
+        <div class="col-md-5 col-md-offset-3">
+            <div class="panel panel-default">
+                <div class="panel-heading"> <strong class="">Acesse a área restrita</strong>
+                </div>
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form" action="/admin/login/logar/" method="POST">
+                        <div class="form-group">
+                            <label for="inputLogin" class="col-sm-3 control-label">Login: </label>
+                            <div class="col-sm-9">
+                                <input type="text" name="login" class="form-control" id="inputLogin" placeholder="Login" required="">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword" class="col-sm-3 control-label">Senha: </label>
+                            <div class="col-sm-9">
+                                <input type="password" name="senha" class="form-control" id="inputPassword" placeholder="Senha" required="">
+                            </div>
+                        </div>                        
+                        <div class="form-group last">
+                            <div class="col-sm-offset-3 col-sm-9">
+                                <button type="submit" class="btn btn-success btn-sm" name="logar">Logar</button>                              
+                            </div>
+                        </div>
+                    </form>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>

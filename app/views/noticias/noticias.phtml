@@ -1,0 +1,37 @@
+    
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-lg-12">
+            <h1 class="page-header">Notícias                    
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="/">Home</a>
+                </li>
+                <li class="active">Notícias</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 noticias">
+            <?php foreach ($view_result as $v): ?>
+                <h2><?= $v['fonte'] ?></h2>
+                <?php
+                $rss = simplexml_load_file($v['feed']);
+                foreach ($rss->channel->item as $rss2):                    
+                    ?>
+                    <h4><a href="<?php $rss2->link ?>" target="_blank"><?= $rss2->title ?></a></h4>
+                    <p><?= $rss2->description ?></p>
+                <?php
+                endforeach;
+            endforeach;
+            ?>         
+        </div>
+
+    </div>
+</div>
+
+
+

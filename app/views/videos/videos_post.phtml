@@ -1,0 +1,77 @@
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-lg-12">
+            <h1 class="page-header">Videoteca
+                <small><?= $view_res['titulo'] ?></small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="/">Home</a>
+                </li>
+                <li class="active">Vídeos</li>
+            </ol>
+        </div>
+
+    </div>   
+    <div class="row">
+
+        <div class="col-lg-8">
+
+            <hr>
+            <p><i class="fa fa-clock-o"></i> Postado em  <?= date('d', strtotime($view_res['data'])) ?> <?= date('M', strtotime($view_res['data'])) ?>, <?= date('Y', strtotime($view_res['data'])) ?> por <?= $view_res['autor'] ?>
+            </p>
+            <hr>
+            <p><?= $view_res['descricao'] ?></p>            
+            <div class="video-container">
+             <?= $view_res['codigo'] ?> 
+            </div>            
+            <hr>
+            <!-- the comment box -->            
+            <div class="well">
+                <h4>Faça um comentário:</h4>
+                <?php //require_once 'web_files/marketing/disqus_insighthall.php'; ?>
+            </div>
+        </div>  
+
+        <hr>
+
+        <div class="col-lg-4">
+              <div class="well">
+                <h4>Categorias</h4>
+                <ul class="list-unstyled">                                                               
+                    <?php foreach ($view_categorias as $cat): ?>
+                        <li><a href="/videos/categoria/<?= $cat['slug_categoria'] ?>"><?= $cat['categoria'] ?></a></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+            <!-- /well -->
+            <div class="well">
+                <h4>Mais acessados</h4>
+                <ul class="list-unstyled">
+                    <?php
+                    foreach (array_slice($view_acessos, 0, 5) as $links => $acessos):
+                        $dados = explode(',', $links);
+                        ?>            
+                        <li><a href="/videos/ver/<?= $this->aux->urlSEO($dados[0], '-') ?>/<?= $this->aux->urlSEO($dados[1], '-') ?>/<?= $dados[2] ?>"><?= $dados[1] ?></a></li>              
+                        <?php
+                    endforeach;
+                    ?>
+                </ul>
+            </div>
+         
+            <!-- /well -->
+        </div>
+    </div>
+    <?php
+    //Incrementa os mais acessados
+    if ($this->getParam(4) != null) {//se existe a id            
+        $actual = $view_res['categoria'] . ',' . $view_res['titulo'] . ',' . $view_res['id'];
+        $fp = fopen("app/views/contador_videos.php", "a+");
+        fwrite($fp, $actual . "\n"); // grava a string no arquivo. Se o arquivo não existir ele será criado
+        fclose($fp);
+    }
+    ?>
+</div>
+<!-- /.container -->

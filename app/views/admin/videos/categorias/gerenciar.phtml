@@ -1,0 +1,24 @@
+<div class="container">
+    <table class="table table-bordered table-striped text-center">
+        <thead>
+        <th>Id</th>            
+        <th>Categoria</th>
+        <th>Slug Categoria</th>
+        <th>Editar</th>
+        <th>Deletar</th>
+        </thead>
+        <?php foreach ($view_sql as $sql): ?>
+            <tr>
+                <td><?= $sql['id'] ?></td>
+                <td><?= $sql['categoria'] ?></td>
+                <td><?= $sql['slug_categoria'] ?></td> 
+                <td><a href="/admin/editar/<?= $this->getParam(2) ?>/<?= $sql['id'] ?>"><img src="/web_files/imagens/admin/editar.png"></a></td>
+                <td><a href="/admin/deletar/<?= $this->getParam(2) ?>/<?= $sql['id'] ?>" 
+                       onclick="return confirm('Confirma a exclusão do registro?')">
+                        <img src="/web_files/imagens/admin/deletar.png"></a>
+                </td>
+            </tr>
+        <?php endforeach; ?>            
+    </table>
+</div>
+

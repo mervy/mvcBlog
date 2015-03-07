@@ -1,0 +1,155 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 id="type-blockquotes">Blockquotes</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="bs-component">
+                <blockquote>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                    <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                </blockquote>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="bs-component">
+                <blockquote class="pull-right">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                    <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container sep">
+    <div class="row">
+        <div class="col-lg-6">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner">
+                    <div class="item active">
+                        <img src="/web_files/imagens/artigos/thumbs.php?i=<?= $view_art_content[0]['imagem'] ?>&w=600&h=370" alt="<?= $view_art_content[0]['titulo'] ?>">
+                        <div class="carousel-caption">
+                            <a href="/blog/ver/<?= $this->aux->urlSEO($view_art_content[0]['categoria'], '-') ?>/<?= $this->aux->urlSEO($view_art_content[0]['titulo'], '-') ?>/<?= $view_art_content[0]['id'] ?>">
+                                <p><?= $this->aux->resumir($view_art_content[0]['artigo'], 150) ?>.</p></a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="/web_files/imagens/artigos/thumbs.php?i=<?= $view_art_content[1]['imagem'] ?>&w=600&h=370" alt="<?= $view_art_content[1]['titulo'] ?>">
+                        <div class="carousel-caption">                                    
+                            <a href="/blog/ver/<?= $this->aux->urlSEO($view_art_content[1]['categoria'], '-') ?>/<?= $this->aux->urlSEO($view_art_content[1]['titulo'], '-') ?>/<?= $view_art_content[1]['id'] ?>">
+                                <p><?= $this->aux->resumir($view_art_content[1]['artigo'], 150) ?>.</p></a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="/web_files/imagens/artigos/thumbs.php?i=<?= $view_art_content[2]['imagem'] ?>&w=600&h=370" alt="<?= $view_art_content[2]['titulo'] ?>">
+                        <div class="carousel-caption">
+                            <a href="/blog/ver/<?= $this->aux->urlSEO($view_art_content[2]['categoria'], '-') ?>/<?= $this->aux->urlSEO($view_art_content[2]['titulo'], '-') ?>/<?= $view_art_content[2]['id'] ?>">
+                                <p><?= $this->aux->resumir($view_art_content[2]['artigo'], 150) ?>.</p></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <a href="/blog/ver/<?= $this->aux->urlSEO($view_art_content[3]['categoria'], '-') ?>/<?= $this->aux->urlSEO($view_art_content[3]['titulo'], '-') ?>/<?= $view_art_content[3]['id'] ?>">
+                <img src="/web_files/imagens/artigos/thumbs.php?i=<?= $view_art_content[3]['imagem'] ?>&w=300&h=200" alt="<?= $view_art_content[3]['titulo'] ?>" class="img-responsive"></a>
+            <h4 class="center-block"><?= $view_art_content[3]['titulo'] ?></h4>
+            <p><?= $this->aux->resumir($view_art_content[3]['artigo'], 100) ?>.</p>
+        </div>
+        <div class="col-lg-3">
+            <a href="/blog/ver/<?= $this->aux->urlSEO($view_art_content[4]['categoria'], '-') ?>/<?= $this->aux->urlSEO($view_art_content[4]['titulo'], '-') ?>/<?= $view_art_content[4]['id'] ?>">
+                <img src="/web_files/imagens/artigos/thumbs.php?i=<?= $view_art_content[4]['imagem'] ?>&w=300&h=200" alt="<?= $view_art_content[4]['titulo'] ?>" class="img-responsive"></a>
+            <h4 class="center-block"><?= $view_art_content[4]['titulo'] ?></h4>
+            <p><?= $this->aux->resumir($view_art_content[4]['artigo'], 100) ?>.</p>
+        </div>
+    </div>
+</div>
+
+<div class="separator"></div>
+
+<div class="container">
+    <div class="jumbotron">
+        <a href="/"><h1 class="text-right"><?= $this->config->getTitulo(); ?></h1></a>
+        <p>Eum dicta definiebas ex, te eum melius delicata, ne est nisl appetere electram. Id quo porro solet iriure, 
+            discere consequuntur ad eum, dicant denique explicari vis te. Nonumy molestiae euripidis id vim, 
+            no numquam consequuntur quo, semper abhorreant eos cu. Dico nostrud vix at, no iriure 
+            aliquando vituperata est. Pro eu quodsi principes posidonium.
+        </p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h2>Galeria de imagens</h2>
+            <hr>
+        </div>
+        <?php
+        $img0 = strip_tags($view_img_content[0]['imagens']);
+        $imagens0 = explode(", ", $img0);
+        $img1 = strip_tags($view_img_content[1]['imagens']);
+        $imagens1 = explode(", ", $img1);
+        $img2 = strip_tags($view_img_content[2]['imagens']);
+        $imagens2 = explode(", ", $img2);
+        ?>                   
+        <div class="col-lg-4 col-md-4 col-sm-6">
+            <a href="/imagens/ver/<?= $view_img_content[0]['slug_titulo'] ?>/<?= $view_img_content[0]['id'] ?>">
+                <img class="img-responsive img-home-portfolio" src="/web_files/imagens/albuns/thumbs.php?img=<?= $view_img_content[0]['slug_titulo'] ?>/<?= $imagens0[0] ?>">
+            </a>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6">
+            <a href="/imagens/ver/<?= $view_img_content[1]['slug_titulo'] ?>/<?= $view_img_content[1]['id'] ?>">
+                <img class="img-responsive img-home-portfolio" src="/web_files/imagens/albuns/thumbs.php?img=<?= $view_img_content[1]['slug_titulo'] ?>/<?= $imagens1[1] ?>">
+            </a>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6">
+            <a href="/imagens/ver/<?= $view_img_content[2]['slug_titulo'] ?>/<?= $view_img_content[2]['id'] ?>">
+                <img class="img-responsive img-home-portfolio" src="/web_files/imagens/albuns/thumbs.php?img=<?= $view_img_content[2]['slug_titulo'] ?>/<?= $imagens2[2] ?>">
+            </a>
+        </div>                    
+    </div>
+    <!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+<div class="separator"></div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <h2>Seleção de vídeos</h2>
+            <ul> 
+                <?php for ($i = 1; $i < 6; $i++): ?>
+                    <li><a href="/videos/ver/<?= $view_vid_content[$i]['slug_categoria'] ?>/<?= $this->aux->urlSEO($view_vid_content[$i]['titulo'], '-') ?>/<?= $view_vid_content[$i]['id'] ?>"><?= $view_vid_content[$i]['titulo'] ?></a></li>
+                <?php endfor; ?>                            
+            </ul>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <a href="/videos/ver/<?= $view_vid_content[0]['slug_categoria'] ?>/<?= $this->aux->urlSEO($view_vid_content[0]['titulo'], '-') ?>/<?= $view_vid_content[0]['id'] ?>">
+                <img class="img-responsive" src="<?= $this->aux->getThumbs($view_vid_content[0]['thumbnail']) ?>">
+            </a>
+        </div>
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+

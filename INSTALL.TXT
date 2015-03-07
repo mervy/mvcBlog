@@ -1,0 +1,13 @@
+# sitebasemvc
+Site base para novos projetos com PHP - MVC - Twitter Bootstrap
+
+INSTALAÇÃO
+=====================================
+Basta criar o banco de dados que deseja e ajustar os parâmetros no arquivo config.ini em system
+e criar as tabelas definidas em tabelas.sql
+
+Recomenda-se entrar diretamente na área administrativa e fazer o cadastro de alguns
+registros para evitar erros.
+
+Por padrão será definido o login 'admin' com senha '12345' (criptografada no arquivo tabelas.sql) para primeiro login na
+área administrativa.

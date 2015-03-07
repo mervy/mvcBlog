@@ -1,0 +1,22 @@
+RewriteEngine On
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?url=$1
+
+# Forçando download
+AddType application/octet-stream .doc .txt .zip .pdf .xls .mp4 .srt .torrent
+
+#Bloquear arquivos json, inc e txt
+<files *.ini>
+ order allow,deny
+ deny from all
+</files>
+
+
+# Bloqueia hotlinks de imagens e arquivos pdf, entre outros
+#RewriteCond %{HTTP_REFERER} !^http://arqueria.mervy.net/.*$      [NC]
+#RewriteCond %{HTTP_REFERER} !^http://arqueria.mervy.net$      [NC]
+#RewriteCond %{HTTP_REFERER} !^http://www.arqueria.mervy.net/.*$      [NC]
+#RewriteCond %{HTTP_REFERER} !^http://www.arqueria.mervy.net$      [NC]
+#RewriteRule .*\.(jpg|jpeg|gif|png|bmp|pdf|swf|zip|rar)$ http://isleofknowledge.com/hotlink [R,NC]
+

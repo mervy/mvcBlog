@@ -1,0 +1,89 @@
+    
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-lg-12">
+            <h1 class="page-header">Artigos e dicas                    
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="/">Home</a>
+                </li>
+                <li class="active">Artigos e dicas</li>
+            </ol>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6"></div>
+        <div class="col-lg-6">
+            <div class="bs-component">
+                <blockquote class="pull-right">
+                    <p>Categorias</p>
+                    <small>                        
+                        <?php foreach ($view_categorias as $cat): ?>
+                            <a href="/blog/categoria/<?= $cat['slug_categoria'] ?>"><?= $cat['categoria'] ?></a> 
+                        <?php endforeach; ?>
+                    </small>
+                </blockquote>
+            </div>
+        </div>
+    </div>   
+   
+    <?php
+    if ($view_result != NULL):
+        foreach ($view_result as $art):
+            ?>  
+            <div class="row">
+                <div class="col-md-1">
+                    <p><i class="fa fa-quote-left fa-4x pull-left "></i>
+                    </p>
+                    <p><?= date("d", strtotime($art['data'])) ?> <?= date('M', strtotime($art['data'])) ?>, <?= date("Y", strtotime($art['data'])) ?></p>
+                </div>
+                <div class="col-md-5">
+                    <a href="/blog/ver/<?= $art['slug_categoria'] ?>/<?= $this->aux->urlSEO($art['titulo'], '-') ?>/<?= $art['id'] ?>">
+                        <img src="/web_files/imagens/artigos/thumbs.php?i=<?= $art['imagem'] ?>&w=600&h=300" class="img-responsive">
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <h3><a href="/blog/ver/<?= $art['slug_categoria'] ?>/<?= $this->aux->urlSEO($art['titulo'], '-') ?>/<?= $art['id'] ?>"><?= $art['titulo'] ?></a>
+                    </h3>
+                    <p>by <?= $art['autor'] ?>
+                    </p>
+                    <p><?= $this->aux->resumir($art['artigo'], 350) ?> </p>
+                    <a class="btn btn-primary" href="/blog/ver/<?= $art['slug_categoria'] ?>/<?= $this->aux->urlSEO($art['titulo'], '-') ?>/<?= $art['id'] ?>">Leia Mais <i class="fa fa-angle-right"></i></a>
+                </div>
+            </div>
+            <hr>
+
+        <?php endforeach; ?>
+ 
+    <?php else: ?>
+        <p>Nenhum artigo para exibir</p>
+    <?php
+    endif;
+    if ($this->contar != '1'):
+        ?>
+        <div class="row text-center">
+            <div class="col-lg-12">
+                <ul class="pagination">           
+                    <?php
+                    for ($i = 1; $i <= $this->contar; $i++) {
+                        if ($i == $this->atual) {
+                            printf('<li class="active"><a href="#"> %s </a></li>' . "\n", $i, $i);
+                        } else {
+                            if ($this->getParam(1) == "categoria") {
+                                echo "<li><a href='/blog/categoria/" . $this->getParam(2) . "/$i'> $i </a></li>\n";
+                            } else {
+                                echo "<li><a href='/blog/index/$i'> $i </a></li>\n";
+                            }
+                        }
+                    }
+                endif;
+                ?>    
+            </ul>
+        </div>
+    </div>
+
+</div>
+<!-- /.container -->

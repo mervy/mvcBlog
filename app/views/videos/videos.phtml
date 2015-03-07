@@ -1,0 +1,77 @@
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-lg-12">
+            <h1 class="page-header">Videoteca                   
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="/">Home</a>
+                </li>
+                <li class="active">Vídeos</li>
+            </ol>
+        </div>
+
+    </div>
+    <!-- /.row -->
+
+    <div class="row">
+        <div class="col-lg-6"></div>
+        <div class="col-lg-6">
+            <div class="bs-component">
+                <blockquote class="pull-right">
+                    <p>Categorias</p>
+                    <small>                        
+                        <?php foreach ($view_categorias as $cat): ?>
+                            <a href="/videos/categoria/<?= $cat['slug_categoria'] ?>"><?= $cat['categoria'] ?></a> 
+                        <?php endforeach; ?>
+                    </small>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <?php
+        if ($view_result != NULL):
+            foreach ($view_result as $videos):
+                ?>   
+                <div class="col-md-4 portfolio-item">
+                    <a href="/videos/ver/<?= $videos['slug_categoria'] ?>/<?= $this->aux->urlSEO($videos['titulo'], '-') ?>/<?= $videos['id'] ?>">
+                        <img class="img-responsive" src="<?= $this->aux->getThumbs($videos['thumbnail']) ?>">
+                    </a>
+                    <h3><a href="/videos/ver/<?= $videos['slug_categoria'] ?>/<?= $this->aux->urlSEO($videos['titulo'], '-') ?>/<?= $videos['id'] ?>">
+                            <?= (strlen($videos['titulo']) > 30) ? $this->aux->resumir($videos['titulo'], 30) : $videos['titulo']; ?></a>
+                    </h3>
+                    <p><?= $this->aux->resumir($videos['descricao'], 80) ?> </p>
+                </div>            
+                <?php
+            endforeach;
+        else:
+            ?>
+            <p>Sem videos para exibir</p>
+        <?php endif; ?>
+    </div>    
+    <?php
+    require_once ('web_files/marketing/adsense/adsense-728x90.php');
+    if ($this->contar != '1'):
+        ?>
+
+        <hr>
+        <div class="row text-center">
+
+            <div class="col-lg-12">
+                <ul class="pagination">
+                    <?php
+                    for ($i = 1; $i <= $this->contar; $i++) {
+                        if ($i == $this->atual) {
+                            printf('<li class="active"><a href="#"> %s </a></li>' . "\n", $i, $i);
+                        } else {
+                            echo "<li><a href='/videos/index/$i'> $i </a></li>\n";
+                        }
+                    }
+                endif;
+                ?> 
+        </div>
+    </div>
+    <!-- /.container -->

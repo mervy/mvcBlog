@@ -1,0 +1,37 @@
+
+<h3>Editando vídeos</h3>
+<form class="opcoes" action='/admin/editar/<?= $this->getParam(2) ?>/<?= $this->getParam(3) ?>/do' enctype="multipart/form-data" method="POST">
+    <label>Titulo:</label><input type="text" name="titulo" value="<?= $view_dados['titulo'] ?>" size="80px" />
+    <label>Thumbnail:</label><input type="text" name="thumbnail" value="<?= $view_dados['thumbnail'] ?>" size="50px" />
+    <label>Categoria:</label>
+    <select name='categorias_id'>        
+        <option selected value="<?= $view_dados['categorias_id'] ?>"><span class='current'><?= $view_dados['categoria'] . "\n" ?></span>
+        <?php
+        foreach ($view_categorias_videos as $cat):
+            if ($view_dados['categoria'] != $cat['categoria']): //Se a categoria já está selecionada, omite ela da lista
+                ?>           
+                <option value="<?= $cat['id'] ?>"><?= $cat['categoria'] . "\n" ?>
+                    <?php
+                endif;
+            endforeach;
+            ?>
+    </select>
+    <label>Descrição: <br></label><textarea name='descricao'><?= $view_dados['descricao'] ?></textarea>    
+    <label>Código: <br></label><textarea name='codigo'><?= $view_dados['codigo'] ?></textarea>  
+    <label>Autor:</label>
+    <select name='autor'>  
+        <option>Autor</option> 
+        <option selected value="<?= $view_dados['autor'] ?>"><?= $view_dados['apelido'] . "\n" ?>
+            <?php
+            foreach ($view_autores as $autor):
+                if ($view_dados['apelido'] != $autor['apelido']): //Se o autor já está selecionado, omite ele da lista
+                    ?>
+                <option value="<?= $autor['id'] ?>"><?= $autor['apelido'] ?>
+                    <?php
+                endif;
+            endforeach;
+            ?>
+    </select> 
+    <input type="hidden" name="data" value="<?= date('Y-m-d') ?>" />
+    <input type="submit" value='Enviar' name="inserir" />
+</form>

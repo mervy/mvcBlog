@@ -1,0 +1,30 @@
+<div class="container">
+    <table class="table table-bordered table-striped text-center">
+        <thead style="text-align: center">
+        <th>Id</th>
+        <th>Nome</th>
+        <th>Login</th>                  
+        <th>Nivel</th>
+        <th>Apelido</th>
+        <th>Status</th>
+        <th>Editar</th>
+        <th>Deletar</th>                    
+        </thead>
+        <?php foreach ($view_sql as $sql): ?>
+            <tr>
+                <td><?= $sql['id'] ?></td>
+                <td><?= $sql['nome'] ?></td>
+                <td><?= $sql['login'] ?></td>                        
+                <td><?= $sql['nivel'] ?></td>                          
+                <td><?= $sql['apelido'] ?></td>     
+                <td><?= $sql['status'] ?></td>
+                <td><a href="/admin/editar/<?= $this->getParam(2) ?>/<?= $sql['id'] ?>"><img src="/web_files/imagens/admin/editar.png"></a></td>
+                <td><a href="/admin/deletar/<?= $this->getParam(2) ?>/<?= $sql['id'] ?>" 
+                                      onclick="return confirm('Confirma a exclusão do registro?')">
+                        <img src="/web_files/imagens/admin/deletar.png"></a>
+                </td>               
+            </tr>                  
+
+        <?php endforeach; ?>            
+    </table>
+</div>

@@ -1,0 +1,33 @@
+<div class="container">
+    <h3>Upload múltiplo de arquivos</h3>
+    <form class="form-horizontal" action="/admin/upload/do" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="diretorio_padrao" class="col-sm-2 control-label">Selecione a pasta padrão: </label>
+            <div class="col-sm-6">
+                <select required class="form-control" name='diretorio_padrao'>  
+                    <option selected value=''>Diretório Padrão</option> 
+                    <option value="web_files/imagens/">/web_files/imagens/</option>
+                    <option value="web_files/imagens/artigos/">/web_files/imagens/artigos/</option>  
+                    <option value="web_files/imagens/albuns/">/web_files/imagens/albuns/</option>     
+                </select> 
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="diretorio_secundario" class="col-sm-2 control-label">Digite a pasta secundária:</label>
+            <div class="col-sm-6">
+                <input type="text" name="diretorio_secundario" class="form-control" id="diretorio_secundario" placeholder="Ex.: Programando com PHP, pasta-das-imagens ">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="arquivos" class="col-sm-2 control-label">Digite a pasta secundária:</label>
+            <div class="col-sm-6">
+                <input type="file" name="files[]" class="form-control" multiple required id="arquivos">
+            </div>
+        </div>  
+         <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" name="upar" class="btn btn-default">Upar arquivos</button>                
+            </div>
+        </div>        
+    </form>
+</div>
