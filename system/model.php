@@ -9,7 +9,6 @@ class Model {
 
     public function __construct() {
         $this->_dados = parse_ini_file("conexao.ini", true);
-        //$this->_conn = ($_SERVER['REMOTE_ADDR'] !== '127.0.0.1') ? "remoto" : "local";
         $this->_conn = (filter_input(INPUT_SERVER, 'REMOTE_ADDR', FILTER_SANITIZE_STRING) !== '127.0.0.1') ? "remoto" : "local";
         try {
             $this->_db = new PDO('mysql:host=' . $this->_dados[$this->_conn]['DB_HOST'] . ';dbname=' . $this->_dados[$this->_conn]['DB_NAME'] . '', $this->_dados[$this->_conn]['DB_USER'], $this->_dados[$this->_conn]['DB_PASS'], array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));

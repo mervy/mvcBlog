@@ -1,4 +1,4 @@
-    
+
 <div class="container">
 
     <div class="row">
@@ -22,7 +22,7 @@
                 $rss = simplexml_load_file($v['feed']);
                 foreach ($rss->channel->item as $rss2):                    
                     ?>
-                    <h4><a href="<?php $rss2->link ?>" target="_blank"><?= $rss2->title ?></a></h4>
+                    <h4><a href="<?= $rss2->link ?>" target="_blank"><?= $rss2->title ?></a></h4>
                     <p><?= $rss2->description ?></p>
                 <?php
                 endforeach;
