@@ -12,6 +12,7 @@
                 <td><?= $sql['id'] ?></td>
                 <td><?= $sql['categoria'] ?></td>
                 <td><?= $sql['slug_categoria'] ?></td> 
+                <td><?= $sql['data'] ?></td> 
                 <td><a href="/admin/editar/<?= $this->getParam(2) ?>/<?= $sql['id'] ?>"><img src="/web_files/imagens/admin/editar.png"></a></td>
                 <td><a href="/admin/deletar/<?= $this->getParam(2) ?>/<?= $sql['id'] ?>" 
                        onclick="return confirm('Confirma a exclusão do registro?')">

@@ -1,37 +1,73 @@
+<div class="container">
+    <h3>Editando vídeos</h3>
+    <form class="form-horizontal" action='/admin/editar/<?= $this->getParam(2) ?>/<?= $this->getParam(3) ?>/do' enctype="multipart/form-data" method="POST">
+        <div class="form-group">
+            <label for="titulo" class="col-sm-2 control-label">Título</label>
+            <div class="col-sm-10">
+                <input type="text" name="titulo" class="form-control" id="titulo" value="<?= $view_dados['titulo'] ?>">
+            </div>
+        </div>       
+        <div class="form-group">
+            <label for="thumbnail" class="col-sm-2 control-label">Thumbnail: </label>
+            <div class="col-sm-10">
+                <input type="text" name="thumbnail" class="form-control" id="thumbnail" value="<?= $view_dados['thumbnail'] ?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="categorias_id" class="col-sm-2 control-label">Categoria</label>
+            <div class="col-sm-4">
 
-<h3>Editando vídeos</h3>
-<form class="opcoes" action='/admin/editar/<?= $this->getParam(2) ?>/<?= $this->getParam(3) ?>/do' enctype="multipart/form-data" method="POST">
-    <label>Titulo:</label><input type="text" name="titulo" value="<?= $view_dados['titulo'] ?>" size="80px" />
-    <label>Thumbnail:</label><input type="text" name="thumbnail" value="<?= $view_dados['thumbnail'] ?>" size="50px" />
-    <label>Categoria:</label>
-    <select name='categorias_id'>        
-        <option selected value="<?= $view_dados['categorias_id'] ?>"><span class='current'><?= $view_dados['categoria'] . "\n" ?></span>
-        <?php
-        foreach ($view_categorias_videos as $cat):
-            if ($view_dados['categoria'] != $cat['categoria']): //Se a categoria já está selecionada, omite ela da lista
-                ?>           
-                <option value="<?= $cat['id'] ?>"><?= $cat['categoria'] . "\n" ?>
+                <select class="form-control" required name='categorias_id'>        
+                    <option selected value="<?= $view_dados['categorias_id'] ?>"><span class='current'><?= $view_dados['categoria'] . "\n" ?></span>
                     <?php
-                endif;
-            endforeach;
-            ?>
-    </select>
-    <label>Descrição: <br></label><textarea name='descricao'><?= $view_dados['descricao'] ?></textarea>    
-    <label>Código: <br></label><textarea name='codigo'><?= $view_dados['codigo'] ?></textarea>  
-    <label>Autor:</label>
-    <select name='autor'>  
-        <option>Autor</option> 
-        <option selected value="<?= $view_dados['autor'] ?>"><?= $view_dados['apelido'] . "\n" ?>
-            <?php
-            foreach ($view_autores as $autor):
-                if ($view_dados['apelido'] != $autor['apelido']): //Se o autor já está selecionado, omite ele da lista
-                    ?>
-                <option value="<?= $autor['id'] ?>"><?= $autor['apelido'] ?>
-                    <?php
-                endif;
-            endforeach;
-            ?>
-    </select> 
-    <input type="hidden" name="data" value="<?= date('Y-m-d') ?>" />
-    <input type="submit" value='Enviar' name="inserir" />
-</form>
+                    foreach ($view_categorias_videos as $cat):
+                        if ($view_dados['categoria'] != $cat['categoria']): //Se a categoria já está selecionada, omite ela da lista
+                            ?>           
+                            <option value="<?= $cat['id'] ?>"><?= $cat['categoria'] . "\n" ?>
+                                <?php
+                            endif;
+                        endforeach;
+                        ?>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="descricao" class="col-sm-2 control-label">Descrição: </label>
+            <div class="col-sm-10">
+                <textarea name='descricao' row="3"><?= $view_dados['descricao'] ?></textarea><!--Largura e altura definidos em /web_files/js/tinymce/implementar2.js-->    
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="codigo" class="col-sm-2 control-label">Código: </label>
+            <div class="col-sm-10">
+                <input type="text" name="codigo" class="form-control" id="codigo" value='<?= $view_dados['codigo'] ?>'> 
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="autor" class="col-sm-2 control-label">Autor: </label>
+            <div class="col-sm-4">
+
+                <select class="form-control" required name='autor'>  
+                    <option>Autor</option> 
+                    <option selected value="<?= $view_dados['autor'] ?>"><?= $view_dados['apelido'] . "\n" ?>
+                        <?php
+                        foreach ($view_autores as $autor):
+                            if ($view_dados['apelido'] != $autor['apelido']): //Se o autor já está selecionado, omite ele da lista
+                                ?>
+                            <option value="<?= $autor['id'] ?>"><?= $autor['apelido'] ?>
+                                <?php
+                            endif;
+                        endforeach;
+                        ?>
+                </select>           
+            </div>
+        </div>  
+        <input type="hidden" name="data" value="<?= date('Y-m-d') ?>" />
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" name="enviar" class="btn btn-default">Editar</button>                
+            </div>
+        </div>
+    </form>
+</div>
+

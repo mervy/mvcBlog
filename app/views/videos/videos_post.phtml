@@ -52,7 +52,7 @@
                 <ul class="list-unstyled">
                     <?php
                     foreach (array_slice($view_acessos, 0, 5) as $links => $acessos):
-                        $dados = explode(',', $links);
+                        $dados = explode(';', $links);
                         ?>            
                         <li><a href="/videos/ver/<?= $this->aux->urlSEO($dados[0], '-') ?>/<?= $this->aux->urlSEO($dados[1], '-') ?>/<?= $dados[2] ?>"><?= $dados[1] ?></a></li>              
                         <?php
@@ -67,7 +67,7 @@
     <?php
     //Incrementa os mais acessados
     if ($this->getParam(4) != null) {//se existe a id            
-        $actual = $view_res['categoria'] . ',' . $view_res['titulo'] . ',' . $view_res['id'];
+        $actual = $view_res['categoria'] . ';' . $view_res['titulo'] . ';' . $view_res['id'];
         $fp = fopen("app/views/contador_videos.php", "a+");
         fwrite($fp, $actual . "\n"); // grava a string no arquivo. Se o arquivo não existir ele será criado
         fclose($fp);
