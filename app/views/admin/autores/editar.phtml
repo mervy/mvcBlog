@@ -1,6 +1,6 @@
 <div class="container">
     <h3>Editando dados de autores</h3>
-    <form class="form-horizontal" action='/admin/editar/<?= $this->getParam(2) ?>/<?= $this->getParam(3)?>/do' enctype="multipart/form-data" method="POST">
+    <form class="form-horizontal" action='/admin/editar/<?= $this->getParam(2) ?>/<?= $this->getParam(3) ?>/do' enctype="multipart/form-data" method="POST">
         <div class="form-group">
             <label for="login" class="col-sm-2 control-label">Login: </label>
             <div class="col-sm-10">
@@ -50,6 +50,7 @@
                 </div>
             </div>  
         </div>
+        <input type="hidden" readonly name="data" class="form-control" id="data" value="<?= date('Y-m-d') ?>">
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <button type="submit" name="inserir" class="btn btn-default">Editar</button>                

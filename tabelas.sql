@@ -85,7 +85,7 @@ CREATE TABLE IF NOT EXISTS `autores` (
 --
 
 INSERT INTO `autores` (`id`, `login`, `nome`, `apelido`, `email`, `senha`, `nivel`, `data`, `status`) VALUES
-(1, 'admin', 'Administrador', 'admin', 'admin@yahoo.com.br', '$2a$13$60223fe817870320d1314OnPdW8euBwloSzNfP8LkKxYxnUfS5e0e', 3, '0000-00-00', 'ativo');
+(1, 'admin', 'Administrador', 'admin', 'admin@yahoo.com.br', '$2y$13$a29525098721c30fb2a87utgJDtw8A0NmIYCp9ozYbl8Hbr4HBLJ6', 3, '0000-00-00', 'ativo');
 
 -- --------------------------------------------------------
 

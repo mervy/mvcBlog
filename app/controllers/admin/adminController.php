@@ -3,8 +3,7 @@
 class Admin extends Controller {
 
     private $auth, $db;
-    private $custo = 13; //custo de processamento da função crypt
-    private $salt; //hash de criação da senha
+    private $pass_param = ['cost' => 13, 'salt' => "a29525098721c30fb2a874a3602dcbaa2ebd572359a8964645615da945cf3910feb9e490a20d3bfa5c592e18eda6ce16cb5dd5fecddcc671e0eeb272b350b72c"];
     public $config;
 
     public function init() {
@@ -14,12 +13,6 @@ class Admin extends Controller {
                 ->checkLogin('redirect');
 
         $this->db = new adminModel();
-    }
-
-    public function __construct() {
-        parent::__construct();
-        $this->salt = hash('sha512', "O mundo é lindo");
-        return $this;
     }
 
     public function showPages($page, $datas = null) {
@@ -34,10 +27,11 @@ class Admin extends Controller {
             $this->auth->setTableName('autores')
                     ->setUserColumn('login')
                     ->setPassColumn('senha')
-                    ->setUser($user)
-                    ->setPass(crypt(filter_input(INPUT_POST, 'senha', FILTER_DEFAULT), '$2a$' . $this->custo . '$' . $this->salt . '$'))
+                    ->setUser($user)                   
+                    ->setPass(password_hash($_POST['senha'],PASSWORD_BCRYPT, $this->pass_param))
                     ->setLoginControllerAction('admin', 'index')
                     ->login();
+                 
         }
 
 
@@ -132,8 +126,8 @@ class Admin extends Controller {
                     $db->inserirCategorias($_POST['categoria'], $_POST['slug_categoria'], $_POST['data']);
                     $redirect->goToUrl('/admin/gerenciar/' . $secao);
                     break;
-                case "autores":
-                    $senha = crypt($_POST['senha'], '$2a$' . $this->custo . '$' . $this->salt . '$');
+                case "autores":                  
+                    $senha = password_hash($_POST['senha'],PASSWORD_BCRYPT, $this->pass_param);
                     $db->insereUsuarios($_POST['login'], $_POST['nome'], $_POST['apelido'], $_POST['email'], $senha, $_POST['nivel'], $_POST['data'], $_POST['status']);
                     $redirect->goToUrl('/admin/gerenciar/' . $secao);
                     break;
@@ -227,7 +221,7 @@ class Admin extends Controller {
                     $redirect->goToUrl('/admin/gerenciar/' . $secao);
                     break;
                 case "autores":
-                    $senha = crypt($_POST['senha'], '$2a$' . $this->custo . '$' . $this->salt . '$');
+                    $senha = password_hash($_POST['senha'],PASSWORD_BCRYPT, $this->pass_param);
                     $db->alteraUsuarios($id, $_POST['login'], $_POST['nome'], $_POST['apelido'], $_POST['email'], $senha, $_POST['nivel'], $_POST['data'], $_POST['status']);
                     $redirect->goToUrl('/admin/gerenciar/' . $secao);
                     break;
@@ -259,7 +253,6 @@ class Admin extends Controller {
 
         $s = explode('_', $secao); //Para formar a lógica abaixo com categorias_artigos -> artigos/categorias, p.ex.
         $this->showPages((isset($s[1]) ? $s[1] . '/' . $s[0] : $s[0]) . '/editar', $datas);
-
     }
 
     public function aprovar() {
