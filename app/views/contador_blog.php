@@ -39,3 +39,4 @@ Plantas;Dicotiledónea;1
 Plantas;Dicotiledónea;1
 Plantas;Dicotiledónea;1
 Plantas;Dicotiledónea;1
+Plantas;Tépala;4
