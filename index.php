@@ -12,14 +12,15 @@ require_once('system/system.php');
 require_once('system/controller.php');
 require_once('system/model.php');
 
-function __autoload($file) {
-    if (file_exists(MODELS . $file . '.php'))
-        require_once( MODELS . $file . '.php' );
-    else if (file_exists(HELPERS . $file . '.php'))
-        require_once( HELPERS . $file . '.php' );
-    else
-        die("<b>$file</b>  - Model ou Helper nao encontrado.");
-}
+spl_autoload_register(function ($class) {
+    if (file_exists(MODELS . $class . '.php')) {
+        require_once( MODELS . $class . '.php' );
+    } else if (file_exists(HELPERS . $class . '.php')) {
+        require_once( HELPERS . $class . '.php' );
+    } else {
+        die("<b>$class</b>  - Model ou Helper nao encontrado.");
+    }
+});
 
 $start = new System;
 $start->run();
