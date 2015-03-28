@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-//ini_set("display_errors", 1);
+ini_set("display_errors", 1);
 
 define('CONTROLLERS', 'app/controllers/');
 define('VIEWS', 'app/views/');
