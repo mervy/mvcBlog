@@ -1,16 +1,18 @@
 <?php
 
-class Index extends Controller {
-
+class Index extends Controller
+{
     public $aux;
     public $config;
 
-    public function init() {
+    public function init()
+    {
         $this->aux = new auxHelper();
         $this->config = new configHelper();
     }
 
-    public function Index_action() {
+    public function Index_action()
+    {
         $posts = new blogModel();
         $posts->_tabela = 'artigos';
         $img = new imagensModel();
@@ -28,7 +30,4 @@ class Index extends Controller {
 
         $this->showPages('index', $dados);
     }
-
 }
-
-?>

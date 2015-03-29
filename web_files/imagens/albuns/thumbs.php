@@ -21,7 +21,7 @@ switch ($image_type) {
         $source = imagecreatefromgif($filename);
         break;
     default:
-        echo("Error Invalid Image Type");
+        echo('Error Invalid Image Type');
         die;
         break;
 }
@@ -46,4 +46,3 @@ imagecopyresampled($image_p, $source, 0, 0, 0, 0, $new_width, $new_height, $widt
 //o 3º argumento é a qualidade da imagem de 0 a 100
 imagejpeg($image_p, null, 100);
 imagedestroy($image_p);
-?>

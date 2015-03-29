@@ -21,7 +21,7 @@ switch ($image_type) {
         $source = imagecreatefromgif($filename);
         break;
     default:
-        echo("Error Invalid Image Type");
+        echo('Error Invalid Image Type');
         die;
         break;
 }

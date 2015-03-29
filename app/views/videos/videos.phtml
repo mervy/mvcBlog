@@ -52,8 +52,8 @@
             <p>Sem videos para exibir</p>
         <?php endif; ?>
     </div>    
-    <?php
-    require_once ('web_files/marketing/adsense/adsense-728x90.php');
+    <?php if(file_exists('web_files/marketing/adsense/adsense-728x90.php')){
+    require_once ('web_files/marketing/adsense/adsense-728x90.php');}
     if ($this->contar != '1'):
         ?>
 
